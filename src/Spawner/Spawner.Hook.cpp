@@ -153,7 +153,7 @@ DEFINE_HOOK(0x4FC551, HouseClass__MPlayerDefeated_NoEnemies, 0x5)
 {
 	enum { ProcEpilogue = 0x4FC6BC };
 
-	if (!MPlayerDefeated::pThis)
+	if (!Spawner::Enabled || !MPlayerDefeated::pThis)
 		return 0;
 
 	for (const auto pHouse : *HouseClass::Array)
@@ -178,7 +178,7 @@ DEFINE_HOOK(0x4FC57C, HouseClass__MPlayerDefeated_CheckAliveAndHumans, 0x7)
 {
 	enum { ProcEpilogue = 0x4FC6BC, FinishMatch = 0x4FC591 };
 
-	if (!MPlayerDefeated::pThis)
+	if (!Spawner::Enabled || !MPlayerDefeated::pThis)
 		return 0;
 
 	GET_STACK(int, numHumans, STACK_OFFSET(0xC0, -0xA8));
